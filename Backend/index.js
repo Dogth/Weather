@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 5000; 
 
 app.use(cors())
+app.use(express.json())
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -13,19 +14,19 @@ app.get('/Forecast', async (req, res) => {
   const Header = {headers: {"X-Yandex-API-Key": APIKey},}
 
   async function YandexWeather (Lat,Lon) {
-    let Data
-    await axios.get("https://api.weather.yandex.ru/v2/forecast?lat="+Lat+"&lon="+Lon, Header)
+   return await axios.get("https://api.weather.yandex.ru/v2/forecast?lat="+Lat+"&lon="+Lon+"&lang=en_US", Header)
     .then(response => {
         console.log('Requested forecast from Yandex')
-        Data = response.data})
+        return response.data.fact})
     .catch((error) => {
         console.log(error);
         return error})
-        
-    return Data
     }
-  const Forecast = await YandexWeather(55,37)
-  res.json([Forecast])
-  console.log("Request to Express Server: " + req)
-  console.log("Server response sent")
+    //Add JSON Parser to minimize sending data to client
+  const Forecast = await YandexWeather(req.query.Lat,req.query.Lon)
+  console.log("---- BEGIN DEBUG STATEMENTS ----")
+  console.log("Request to Express Server: " + req.query.Lat, req.query.Lon)
+  console.log("API response: "+ res.statusCode)
+  console.log("---- END DEBUG STATEMENTS ----")
+  res.json(Forecast)
 }); 
