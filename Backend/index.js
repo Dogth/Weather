@@ -14,19 +14,24 @@ app.get('/Forecast', async (req, res) => {
   const Header = {headers: {"X-Yandex-API-Key": APIKey},}
 
   async function YandexWeather (Lat,Lon) {
+    if(Lat && Lon){
    return await axios.get("https://api.weather.yandex.ru/v2/forecast?lat="+Lat+"&lon="+Lon+"&lang=en_US", Header)
     .then(response => {
         console.log('Requested forecast from Yandex')
-        return response.data.fact})
+        return response.data})
     .catch((error) => {
         console.log(error);
         return error})
     }
+    else console.log("No coords specified")
+  }
+    //Tokens or maybe single page one load
     //Add JSON Parser to minimize sending data to client
   const Forecast = await YandexWeather(req.query.Lat,req.query.Lon)
-  console.log("---- BEGIN DEBUG STATEMENTS ----")
+   console.log("---- BEGIN DEBUG STATEMENTS ----")
   console.log("Request to Express Server: " + req.query.Lat, req.query.Lon)
   console.log("API response: "+ res.statusCode)
   console.log("---- END DEBUG STATEMENTS ----")
-  res.json(Forecast)
+  res.json(Forecast.fact)
 }); 
+
