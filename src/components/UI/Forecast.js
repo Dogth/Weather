@@ -1,5 +1,5 @@
 
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Forecast() {
@@ -12,8 +12,20 @@ const locationParams = {
     maximumAge: 10000,
   };
 
-useEffect(() => {
-    async function onLoadForecast(){ 
+useEffect(() => {async function cockIslandWeather(){
+    let forecast = await reqForecast(53.837566, -9.351470)
+    setForecast(forecast)
+
+
+  }cockIslandWeather()}, [])
+  
+async function getClientForecast(){
+    return getLocation().then(async (coords) => {
+        return reqForecast(coords.Lat,coords.Lon)
+    })
+}
+
+async function onLocationForecast(){ 
     if(navigator.geolocation){
         navigator.permissions.query({name:"geolocation"})
         .then(async (result) => {
@@ -32,13 +44,6 @@ useEffect(() => {
     else{
         console.error('Geolocation not avaliable for your device')
     }
-
-  } onLoadForecast()}, [])
-  
-async function getClientForecast(){
-    return getLocation().then(async (coords) => {
-        return reqForecast(coords.Lat,coords.Lon)
-    })
 }
 
 async function reqForecast(Lat,Lon) {
@@ -62,7 +67,8 @@ async function getLocation(){
 }
 
 return(
-    <div>
+    <>
+    <button onClick={() => onLocationForecast()}>Get Location</button>
     <h1>temp:{Forecast.temp}</h1>
     <h1>cloudness:{Forecast.cloudness}</h1>
     <h1>condition:{Forecast.condition}</h1>
@@ -75,6 +81,31 @@ return(
     <h1>wind_dir:{Forecast.wind_dir}</h1>
     <h1>wind_gust:{Forecast.wind_gust}</h1>
     <h1>wind_speed:{Forecast.wind_speed}</h1>
-    </div>
+    </>
   )
 }
+/*
+
+condition: "overcast"
+country: "Russia"
+date: "2022-11-20"
+feels_like: -9
+locality: "Serpukhov"
+province: "Moscow Region"
+season: "autumn"
+temp: -4
+
+
+    <h1>temp:{Forecast.temp}</h1>
+    <h1>cloudness:{Forecast.cloudness}</h1>
+    <h1>condition:{Forecast.condition}</h1>
+    <h1>daytime:{Forecast.daytime}</h1>
+    <h1>feels_like:{Forecast.feels_like}</h1>
+    <h1>icon:{Forecast.icon}</h1>
+    <h1>season:{Forecast.season}</h1>
+    <h1>source:{Forecast.source}</h1>
+    <h1>uptime:{Forecast.uptime}</h1>
+    <h1>wind_dir:{Forecast.wind_dir}</h1>
+    <h1>wind_gust:{Forecast.wind_gust}</h1>
+    <h1>wind_speed:{Forecast.wind_speed}</h1>
+*/

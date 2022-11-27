@@ -1,0 +1,111 @@
+
+.light{
+    background: radial-gradient(
+        800px circle at var(--x-pos) var(--y-pos),
+        rgba(255,255,255,.04),
+        transparent 20%
+    );
+    content: "";
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    transition: all 500ms;
+}
+
+.tile{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    border-radius: 10px;
+    width: 11vw;
+    height: 11vw;
+    background-color: #282828;
+    transition: all 500ms;
+}
+
+.tile:hover{
+    background-color: #48484860;
+    transform: scale(110%);
+}
+
+.Jeo{
+    align-content: center;
+    justify-content: center;
+    font-size: 40pt;
+    display: flex;
+    flex-wrap: wrap;
+    top: 25vh;
+    left: 28.5vw;
+    position: absolute;
+    width: 30vw;
+    height: 10vh;
+}
+
+.ForecastTable{
+    padding: 1vw;
+    overflow-y:scroll;
+    position: absolute;
+    gap: .7vw;
+    top: 13vh;
+    left: 75vw;
+    display: flex;
+    flex-wrap: wrap;
+    width: 23vw;
+    height: 75vh;
+}
+
+.ForecastTable::-webkit-scrollbar {
+    display: none;
+  }
+
+.ForecastTable:hover > div:not(:hover){filter: brightness(80%);scale: 96%;}
+
+.Forecast{
+    padding-top: .3vw;
+    padding-left: 1vw;
+
+    position: absolute;
+    top: 13vh;
+    left: 12vw;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60vw;
+    height: 75vh;
+}
+
+.Graph{
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    top: 50vh;
+    left: 13vw;
+    border-radius: 10px;
+    background-color: #282828;
+    width: 59vw;
+    height: 40vh;
+    transition: all 500ms;
+}
+
+.Graph:hover{
+    scale: 102%;
+    background-color: #48484860;
+}
+
+
+.color{
+    width: 50px;
+    height: 50px;
+}
+
+.Cbox{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 100px;
+    max-height: 300px;
+}
