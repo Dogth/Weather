@@ -1,17 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component, useState } from 'react';
-
-import Forecast from './components/UI/Forecast';
-import Tile from './components/UI/Tile/Tile';
+//import Tile from './components/UI/Tile/Tile';
+import Template from './components/UI/Markup/Template';
+//import Forecast from './components/UI/Forecast';
 
 export default function App() {
 
 
   return (
-    <div className='grid'>
-     <Forecast />
-    </div>
+     <Template />
   );
 }
 

@@ -1,0 +1,50 @@
+.Wrapper
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    width: auto;
+    left: calc(100% - 18px);
+}
+
+.Tag{
+    gap: 4px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.Color{
+    width: 14px;
+    height: 14px;
+    border-radius: 100vh;
+    margin: 2px;
+    transition: all .5s;
+    transition-timing-function: cubic-bezier(0.0, 0.0, 0.1, 2.4);
+}
+
+.Color:hover
+{
+    transform: scale(120%);
+}
+
+.Help
+{
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0%;
+    font-style: italic;
+    transition: all 1s;
+    transition-timing-function: cubic-bezier(0, 0.6, 0.5, 1.0);
+    color: #928374;
+}
+
+.Color:hover + .Help
+{
+    display: flex;
+    opacity: 50%;
+
+}
+

@@ -21,7 +21,7 @@ useEffect(() => {async function cockIslandWeather(){
   
 async function getClientForecast(){
     return getLocation().then(async (coords) => {
-        return reqForecast(coords.Lat,coords.Lon)
+        return await reqForecast(coords.Lat,coords.Lon)
     })
 }
 
@@ -29,12 +29,12 @@ async function onLocationForecast(){
     if(navigator.geolocation){
         navigator.permissions.query({name:"geolocation"})
         .then(async (result) => {
-        if (result.state === "granted" || result.state === "prompt"){
+        if (result.state == "granted" || result.state == "prompt"){
             let forecast = await getClientForecast()
             console.log(forecast)
             setForecast(forecast)
         }
-        else if(result.state === "denied"){
+        else if(result.state == "denied"){
             console.warn('Location services are turned off');
             let forecast = await reqForecast(53.837566, -9.351470)
             setForecast(forecast)
@@ -42,7 +42,7 @@ async function onLocationForecast(){
         })
     }
     else{
-        console.error('Geolocation not avaliable for your device')
+        console.error('Geolocation is not avaliable for your device')
     }
 }
 
@@ -65,7 +65,7 @@ async function getLocation(){
       },reject, locationParams);
     });
 }
-
+console.log(JSON.stringify(Forecast));
 return(
     <>
     <button onClick={() => onLocationForecast()}>Get Location</button>
