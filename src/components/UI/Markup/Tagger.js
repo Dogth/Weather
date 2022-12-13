@@ -1,9 +1,10 @@
-import './TG.css';
+import './Tagger.css';
 
 export default function Tagger(props){
-   const Tags = [];
-   const T = ['Cold','Strong wind','Not humid','Cloudy','Winter']
+   const Tags = []; //From props
+   const T = ['Cold','Strong wind','Not humid','Cloudy','Winter'] //For testing
 
+//Finalize colors & tags
 
    const TagList = new Map([
     ["warm",      "#FF7F00"],
@@ -34,7 +35,6 @@ export default function Tagger(props){
 
    T.forEach((Data) => {
     Tags.push(<div className='Tag'><div className='Color' style={{background:TagList.get(Data.replace(/\s+/g, '').toLowerCase())}}></div></div>)
-    console.log()
    })
 
    //TODO:
@@ -46,7 +46,6 @@ export default function Tagger(props){
         <>
         <div className='Wrapper'>
         {Tags}
-        
         </div>
         </>
         )
