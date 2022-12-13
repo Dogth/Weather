@@ -1,3 +1,5 @@
+/* Optimize all this spooky dookie */
+
 .Wrapper
 {
     position: absolute;
@@ -6,7 +8,8 @@
     flex-direction: column;
     width: fit-content;
     width: auto;
-    left: calc(100% - 18px);
+    top: 2px;
+    left: calc(100% - 20px);
 }
 
 .Tag{

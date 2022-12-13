@@ -1,0 +1,15 @@
+.BigCard{
+    background-color: #282828;
+    width: 50vw;
+    height: 51vw;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+}
+
+h4, h3, h1{
+    margin-left: 10px;
+    margin-top: 1px;
+    color: #FBF1C7;
+}

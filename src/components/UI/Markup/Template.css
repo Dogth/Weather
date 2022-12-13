@@ -9,16 +9,6 @@
     margin: 0vw 0 0 0;
 }
 
-.BigCard{
-    background-color: #282828;
-    width: 50vw;
-    height: 51vw;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column;
-    position: relative;
-}
-
 .Carousel{
     width: 30vw;
     height: 51vw;
